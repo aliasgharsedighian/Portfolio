@@ -11,6 +11,20 @@ type pageProps = {
   };
 };
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { productsCategory: string };
+}) {
+  const category = await fetchCategoryProduct(params.productsCategory);
+  if (!category) return notFound();
+  // props to pass to title needs to be string
+
+  return {
+    title: `Portfolio - ${params.productsCategory.replaceAll("%20", " ")}`,
+  };
+}
+
 const fetchCategoryProduct = async (productsCategory: string) => {
   const res = await fetch(
     `https://fakestoreapi.com/products/category/${productsCategory}`

@@ -23,7 +23,7 @@ const links = [
   { id: 1, href: "/", text: "Home" },
   { id: 2, href: "/products", text: "Products" },
   { id: 3, href: "/portfolio", text: "Portfolio" },
-  { id: 4, href: "#", text: "About" },
+  { id: 4, href: "/test", text: "Test page" },
   { id: 5, href: "#", text: "Contact" },
 ];
 

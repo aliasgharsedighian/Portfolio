@@ -1,5 +1,5 @@
-import "../../styles/SignUpPage.css";
-import PageWrapper from "../pageWrapper";
+import "@/styles/SignUpPage.css";
+import PageWrapper from "@/app/pageWrapper";
 
 export const metadata = {
   title: "Portfolio - Sign-up",
@@ -12,9 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="sign-up-section dark:bg-zinc-800">
+    <section>
       <PageWrapper>
-        <div className="sign-up-effect dark:bg-zinc-700">{children}</div>
+        <div>{children}</div>
       </PageWrapper>
     </section>
   );
