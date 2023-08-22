@@ -2,6 +2,7 @@ import React from "react";
 import { ProductsType } from "../../../typing";
 import { notFound } from "next/navigation";
 import AddToBasketButton from "./AddToBasketButton";
+import SingleProductImage from "./SingleProductImage";
 
 type PageProps = {
   params: {
@@ -37,8 +38,8 @@ async function ProductPage({ params: { productId } }: PageProps) {
   const { id, title, price, description, category, image } = product;
 
   return (
-    <div className=" flex gap-10 items-start justify-center ">
-      <img className="w-[500px]" src={image} alt="" />
+    <div className=" flex flex-col lg:flex-row gap-10 items-start justify-center ">
+      <SingleProductImage image={image} />
       <div className="flex flex-col gap-4 my-auto">
         <div className="flex flex-col gap-2 border-b border-gray-400 pb-4">
           <span className="text-xl font-bold">Title:</span>

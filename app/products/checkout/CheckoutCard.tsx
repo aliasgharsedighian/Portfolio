@@ -53,18 +53,25 @@ function CheckoutCard({
     dispatch(removeFromBasket({ id }));
   };
   return (
-    <div className="checkout-card-container">
-      <div className="checkout-card-content-left">
-        <img src={image} alt="" />
-        <div className="checkout-card-content-detail dark:text-gray-900">
-          <p>{title}</p>
-          <span>${price}</span>
-          <span>{quantity}</span>
+    <div className="flex flex-col gap-2">
+      <div className="checkout-card-container">
+        <div className="checkout-card-content-left">
+          <img src={image} alt="" />
+          <div className="checkout-card-content-detail dark:text-gray-900">
+            <p>{title}</p>
+            <span>${price}</span>
+            <span>{quantity}</span>
+          </div>
+        </div>
+        <div className="checkout-card-content-right">
+          <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
+          <button onClick={() => dispatch(decrementQuantity(id))}>-</button>
         </div>
       </div>
-      <div className="checkout-card-content-right">
-        <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
-        <button onClick={() => dispatch(decrementQuantity(id))}>-</button>
+      <div className="flex justify-center">
+        <button onClick={removeItemFromBasket} className="addButton ">
+          Remove From Basket
+        </button>
       </div>
     </div>
   );
