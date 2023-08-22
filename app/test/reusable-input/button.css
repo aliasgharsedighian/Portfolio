@@ -1,0 +1,21 @@
+.class-btn-for-sell {
+  padding: 10px 0;
+  background-color: #da5b4b;
+  color: white;
+  width: 150px;
+  border-radius: 7px;
+}
+.class-btn-for-buy {
+  padding: 10px 0;
+  background-color: #009b87;
+  color: white;
+  width: 150px;
+  border-radius: 7px;
+}
+.class-btn-for-info {
+  padding: 10px 0;
+  background-color: #3d6b99;
+  color: white;
+  width: 150px;
+  border-radius: 7px;
+}

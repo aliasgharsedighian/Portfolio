@@ -1,0 +1,30 @@
+.carousel-slider-container {
+  direction: ltr;
+}
+.slider-page-single {
+  position: relative;
+}
+.slider-page-single img {
+}
+.slider-page-single p {
+  position: absolute;
+  bottom: 60px;
+  left: calc(50% - 150px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.carousel-root {
+  position: relative !important;
+}
+.carousel {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  /* width: auto !important; */
+}
+/* .carousel .thumbs {
+  display: flex !important;
+  flex-direction: column !important;
+} */
