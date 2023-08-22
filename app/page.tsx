@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { SampleDesignData } from "@/components/SampleDesignData";
-import "../styles/SampleDesign.css";
+import "@/styles/SampleDesign.css";
 import PageWrapper from "./pageWrapper";
 import { motion } from "framer-motion";
+import HomeSlider from "./HomeSlider";
 
 const variants = {
   hidden: { opacity: 0 },
@@ -18,7 +19,8 @@ const images = {
 
 function HomePage() {
   return (
-    <>
+    <div className="flex flex-col">
+      <HomeSlider />
       <PageWrapper>
         <section className="sample-container ">
           <div className="sample-title">
@@ -61,7 +63,7 @@ function HomePage() {
           </motion.div>
         </section>
       </PageWrapper>
-    </>
+    </div>
   );
 }
 

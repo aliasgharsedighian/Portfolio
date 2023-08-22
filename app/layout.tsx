@@ -1,7 +1,7 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import Footer from "./Footer";
 import Header from "./Header";
-import { ReduxProviders } from "../redux/provider";
+import { ReduxProviders } from "@/redux/provider";
 import ThemeProviders from "./ThemeProviders";
 import React from "react";
 

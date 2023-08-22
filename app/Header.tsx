@@ -1,22 +1,22 @@
 "use client";
 
-import "../styles/Navbar.css";
+import "@/styles/Navbar.css";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 import { useDispatch, useSelector } from "react-redux";
-import { selectItems, selectTotal } from "../redux/Features/basket/basketSlice";
+import { selectItems, selectTotal } from "@/redux/Features/basket/basketSlice";
 import {
   activity,
   userAccountLogged,
   addUserLogged,
   changeActivity,
-} from "../redux/Features/user/userSlice";
+} from "@/redux/Features/user/userSlice";
 import { Bars3Icon } from "@heroicons/react/20/solid";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import CheckoutCard from "./products/checkout/CheckoutCard";
-import { ProductsType } from "../typing";
+import { ProductsType } from "@/typing";
 import DarkModeButton from "./DarkModeButton";
 
 const links = [
