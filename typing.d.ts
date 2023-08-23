@@ -58,3 +58,13 @@ export interface ReusableInputType {
   spanDir?: string;
   direction?: string;
 }
+
+interface signUpFormType {
+  firstName: string;
+  lastName: string;
+  city: string;
+  country: string;
+  email: string;
+  password: string;
+  image: string;
+}

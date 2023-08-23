@@ -8,6 +8,7 @@ import {
 } from "../../redux/Features/user/userSlice";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { signUpFormType } from "@/typing";
 
 function SignUpForm() {
   const users = useSelector(addedUser);
@@ -53,10 +54,10 @@ function SignUpForm() {
     }
   };
 
-  const addUser: any = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    signUpCondition();
-  };
+  // const addUser: any = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   e.preventDefault();
+  //   signUpCondition();
+  // };
 
   function ValidateEmail() {
     let validRegex =
@@ -67,27 +68,27 @@ function SignUpForm() {
     return false;
   }
 
-  function signUpCondition() {
-    if (firstname === "") {
+  function signUpCondition(data: signUpFormType) {
+    if (data.firstName === "") {
       firstnameInput.current.focus();
-    } else if (lastname === "") {
+    } else if (data.lastName === "") {
       lastnameInput.current.focus();
-    } else if (city === "") {
+    } else if (data.city === "") {
       cityInput.current.focus();
-    } else if (country === "") {
+    } else if (data.country === "") {
       countryInput.current.focus();
-    } else if (email === "") {
+    } else if (data.email === "") {
       emailInput.current.focus();
-    } else if (password === "") {
+    } else if (data.password === "") {
       passwordInput.current.focus();
-    } else if (img === "") {
+    } else if (data.image === "") {
       setImg("http://localhost:3000/images/userList/no-img.png");
     } else if (ValidateEmail() === false) {
       alert("Invalid email address!");
-    } else if (password.length < 6) {
+    } else if (data.password.length < 6) {
       alert("password must be 6 or more");
       passwordInput.current.focus();
-    } else if (userExist(email) === false) {
+    } else if (userExist(data.email) === false) {
       alert("this email is taken");
     } else {
       dispatch(addToUser(user));
@@ -99,9 +100,20 @@ function SignUpForm() {
 
   return (
     <div className="sign-up-form">
-      <form action="">
+      <form
+        onSubmit={(e: any) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const data: signUpFormType | any = Object.fromEntries(
+            formData.entries()
+          );
+          signUpCondition(data);
+        }}
+        action=""
+      >
         <div className="sign-up-name">
           <input
+            name="firstName"
             ref={firstnameInput}
             type="text"
             value={firstname}
@@ -109,6 +121,7 @@ function SignUpForm() {
             onChange={(e) => setFirstName(e.target.value)}
           />
           <input
+            name="lastName"
             ref={lastnameInput}
             type="text"
             value={lastname}
@@ -118,6 +131,7 @@ function SignUpForm() {
         </div>
         <div className="sign-up-city-country">
           <input
+            name="city"
             ref={cityInput}
             type="text"
             value={city}
@@ -125,6 +139,7 @@ function SignUpForm() {
             onChange={(e) => setCity(e.target.value)}
           />
           <input
+            name="country"
             ref={countryInput}
             type="text"
             value={country}
@@ -134,13 +149,16 @@ function SignUpForm() {
         </div>
         <div className="sign-up-pass-btn">
           <input
+            name="email"
             ref={emailInput}
-            type="text"
+            type="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
+          <div className="form-reqs">A valid Email is required</div>
           <input
+            name="password"
             ref={passwordInput}
             type="password"
             value={password}
@@ -148,14 +166,19 @@ function SignUpForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
+            name="image"
             ref={imgInput}
             type="file"
-            onChange={(e) => {
-              setImg("http://localhost:3000/images/userList/userAdd.jpg");
-              console.log(e.target.files);
+            onChange={(e: any) => {
+              const file = e.target.files[0];
+
+              setImg(file);
+
+              console.log(e.target.files[0]);
             }}
           />
           <button
+            type="submit"
             className="disabled:bg-gray-600"
             disabled={
               !firstname ||
@@ -165,7 +188,7 @@ function SignUpForm() {
               !email ||
               !password
             }
-            onClick={addUser}
+            // onClick={addUser}
           >
             Create New Account
           </button>

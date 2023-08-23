@@ -15,15 +15,15 @@ function CheckoutPage() {
   const session = useSelector(activity);
   return (
     <div className="bg-gray-100">
-      <main className="lg:flex max-w-screen-2xl mx-auto">
+      <main className="lg:flex max-w-screen-2xl mx-auto dark:bg-zinc-600">
         {/* {left} */}
-        <div className="flex-grow m-5 shadow-sm">
+        <div className="flex-grow m-5 shadow-sm dark:bg-zinc-600">
           <img
             className="w-[1020px] h-[250px] object-contain"
             src="http://localhost:3000/images/Prime-day-banner.png"
             alt=""
           />
-          <div className="flex flex-col p-5 space-y-10 bg-white">
+          <div className="flex flex-col p-5 space-y-10 bg-white dark:bg-zinc-600">
             <h1 className="text-3xl border-b pb-4">
               {items.length === 0 ? "Your Basket is empty." : "Shopping Basket"}
             </h1>
@@ -45,7 +45,7 @@ function CheckoutPage() {
         </div>
 
         {/* {right} */}
-        <div className="flex flex-col bg-white p-10 shadow-md">
+        <div className="flex flex-col bg-white p-10 shadow-md dark:bg-zinc-600 dark:border-l">
           {items.length > 0 && (
             <>
               <h2 className="whitespace-nowrap dark:text-gray-900">

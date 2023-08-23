@@ -6,19 +6,20 @@ import SingleProductImage from "./SingleProductImage";
 
 type PageProps = {
   params: {
-    productId: number;
+    productId: string[] | any;
   };
 };
 
 export async function generateMetadata({
   params,
 }: {
-  params: { productId: number };
+  params: { productId: number[] };
 }) {
-  const title = await fetchProduct(params.productId);
+  const title = await fetchProduct(params.productId[0]);
   if (!title) return notFound();
   // props to pass to title needs to be string
   const productsTitle = title.title;
+  // console.log(params.productId[0]);
   return {
     title: `Portfolio - ${productsTitle.replaceAll("%20", " ")}`,
   };
@@ -33,8 +34,8 @@ const fetchProduct = async (productId: number) => {
 };
 
 async function ProductPage({ params: { productId } }: PageProps) {
-  const product: ProductsType = await fetchProduct(productId);
-  console.log("id:", productId);
+  const product: ProductsType = await fetchProduct(productId[0]);
+  // console.log("id:", productId[0]);
   const { id, title, price, description, category, image } = product;
 
   return (

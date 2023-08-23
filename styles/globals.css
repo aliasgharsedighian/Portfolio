@@ -62,3 +62,16 @@ body {
 .show-more-page-container {
   direction: rtl;
 }
+.form-reqs {
+  display: none;
+  font-size: 12px;
+  color: red;
+}
+
+input:invalid ~ .form-reqs,
+textarea:invalid ~ .form-reqs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}

@@ -33,7 +33,12 @@ function HomeSlider() {
               key={item.id}
             >
               {/* <Link href={item.href}> */}
-              <img loading="lazy" src={item.image} alt={item.title} />
+              <img
+                className="max-h-[650px]"
+                loading="lazy"
+                src={item.image}
+                alt={item.title}
+              />
               <p>{item.desc}</p>
               {/* </Link> */}
             </div>
